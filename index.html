@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knight AC & Heating | Boulder City, NV HVAC Specialist</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;600;700&display=swap');
+
+        /* CSS Reset & Variable Tokens */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-main: #000000;
+            --bg-hero: #050505;
+            --bg-surface: #111111;
+            --bg-strip: #1a0000;
+            --primary-accent: #ff0d26;
+            --text-primary: #ffffff;
+            --text-secondary: #aaaaaa;
+            --font-family: 'Albert Sans', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-family: var(--font-family);
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+        }
+
+        body {
+            font-size: 18px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Typography Global styling */
+        h1, h2, h3 {
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: 32px; /* Mobile first */
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 24px;
+        }
+
+        p {
+            color: var(--text-secondary);
+        }
+
+        /* Component Layouts */
+        .section-padding {
+            padding: 40px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* 1. Sticky Header */
+        .sticky-header {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.95);
+            border-bottom: 1px solid #222222;
+            padding: 15px 20px;
+            display: table;
+            width: 100%;
+        }
+
+        .header-left {
+            display: table-cell;
+            vertical-align: middle;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .header-left a {
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .header-right {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: right;
+        }
+
+        .btn-call-header {
+            display: inline-block;
+            background-color: var(--primary-accent);
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: background-color 0.2s ease;
+        }
+
+        /* 2. Hero Section */
+        .hero {
+            background-color: var(--bg-hero);
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid #111111;
+        }
+
+        /* Subtle abstract tech pattern via CSS overlay */
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            background-image: radial-gradient(circle at 1px 1px, #222222 1px, transparent 0);
+            background-size: 24px 24px;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 750px;
+        }
+
+        .hero-subtext {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        .hero-ctas {
+            display: block;
+        }
+
+        .btn-primary {
+            display: block;
+            background-color: var(--primary-accent);
+            color: var(--text-primary);
+            text-decoration: none;
+            text-align: center;
+            font-weight: 700;
+            font-size: 18px;
+            padding: 16px 24px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            border: 2px solid var(--primary-accent);
+            transition: opacity 0.2s;
+        }
+
+        .btn-secondary {
+            display: block;
+            background-color: transparent;
+            color: var(--text-primary);
+            text-decoration: none;
+            text-align: center;
+            font-weight: 600;
+            font-size: 18px;
+            padding: 16px 24px;
+            border-radius: 6px;
+            border: 2px solid var(--text-primary);
+            margin-bottom: 32px;
+            transition: background-color 0.2s;
+        }
+
+        .trust-bar {
+            border-top: 1px solid #222222;
+            padding-top: 20px;
+            font-size: 14px;
+            color: var(--text-primary);
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        .trust-bar span {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* 3. Social Proof Strip */
+        .proof-strip {
+            background-color: var(--bg-strip);
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #330000;
+            border-bottom: 1px solid #330000;
+        }
+
+        .proof-text {
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 0.02em;
+            color: #ffb4b4;
+        }
+
+        .proof-stars {
+            color: var(--primary-accent);
+            margin-left: 4px;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        /* 4. Services Section */
+        .services-grid {
+            display: block;
+        }
+
+        .service-card {
+            background-color: var(--bg-surface);
+            padding: 24px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-accent);
+            margin-bottom: 16px;
+        }
+
+        .service-icon {
+            margin-bottom: 12px;
+        }
+
+        .service-icon svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--primary-accent);
+        }
+
+        .service-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .service-desc {
+            font-size: 16px;
+            color: var(--text-secondary);
+        }
+
+        /* 5. Why Knight AC Section */
+        .why-section {
+            background-color: #050505;
+        }
+
+        .why-grid {
+            display: block;
+        }
+
+        .why-card {
+            margin-bottom: 32px;
+        }
+
+        .why-card-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            display: table;
+        }
+
+        .why-card-icon {
+            display: table-cell;
+            padding-right: 12px;
+            color: var(--primary-accent);
+            font-size: 22px;
+            line-height: 1;
+        }
+
+        .why-card-text {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .why-desc {
+            font-size: 16px;
+            color: var(--text-secondary);
+            padding-left: 34px;
+        }
+
+        /* 6. Reviews Section */
+        .reviews-grid {
+            display: block;
+        }
+
+        .review-card {
+            background-color: var(--bg-surface);
+            padding: 24px;
+            border-radius: 10px;
+            border-top: 4px solid var(--primary-accent);
+            margin-bottom: 20px;
+        }
+
+        .review-stars {
+            color: #ffcc00;
+            font-size: 16px;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+        }
+
+        .review-quote {
+            font-size: 17px;
+            font-style: italic;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .review-author {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* 7. Contact / CTA Section */
+        .contact-section {
+            background-color: var(--primary-accent);
+            color: var(--text-primary);
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .contact-subtext {
+            color: #ffffff;
+            opacity: 0.9;
+            font-size: 18px;
+            margin-bottom: 32px;
+        }
+
+        .btn-giant-call {
+            display: block;
+            background-color: var(--text-primary);
+            color: var(--primary-accent);
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: 700;
+            padding: 18px 24px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            transition: opacity 0.2s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .contact-meta {
+            font-size: 15px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .contact-meta a {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        /* 8. Footer Section */
+        .footer {
+            background-color: #080808;
+            border-top: 1px solid #111111;
+            padding: 40px 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .footer-content p {
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+
+        .footer-content .footer-accent {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .footer-copyright {
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid #151515;
+            font-size: 13px;
+        }
+
+        /* Desktop Breakpoint Configuration */
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 48px;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+
+            .section-padding {
+                padding: 60px 0;
+            }
+
+            .sticky-header {
+                padding: 20px 40px;
+            }
+
+            .header-left {
+                font-size: 22px;
+            }
+
+            .btn-call-header {
+                font-size: 15px;
+                padding: 10px 20px;
+            }
+
+            .hero-subtext {
+                font-size: 20px;
+            }
+
+            .hero-ctas {
+                display: table;
+                width: auto;
+                margin-bottom: 40px;
+            }
+
+            .btn-primary, .btn-secondary {
+                display: table-cell;
+                width: auto;
+                padding: 16px 32px;
+                margin-bottom: 0;
+            }
+
+            .btn-primary {
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+
+            .btn-secondary {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+                border-left: none;
+            }
+
+            .trust-bar span {
+                display: inline-block;
+                margin-right: 24px;
+                margin-bottom: 0;
+            }
+
+            .proof-text {
+                font-size: 18px;
+            }
+
+            /* 2 Column Table-like behavior for Services Grid layout */
+            .services-grid {
+                display: table;
+                width: 100%;
+                border-collapse: separate;
+                border-spacing: 20px;
+                margin: 0 -20px;
+            }
+
+            .services-row {
+                display: table-row;
+            }
+
+            .service-card {
+                display: table-cell;
+                width: 50%;
+                margin-bottom: 0;
+                vertical-align: top;
+            }
+
+            /* 3 Column layout for Why and Reviews */
+            .why-grid, .reviews-grid {
+                display: table;
+                width: 100%;
+                border-collapse: separate;
+                border-spacing: 20px;
+                margin: 0 -20px;
+            }
+
+            .why-card, .review-card {
+                display: table-cell;
+                width: 33.333%;
+                margin-bottom: 0;
+                vertical-align: top;
+            }
+
+            .contact-section h2 {
+                font-size: 40px;
+            }
+
+            .btn-giant-call {
+                display: inline-block;
+                width: auto;
+                padding: 18px 48px;
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. STICKY HEADER -->
+    <header class="sticky-header">
+        <div class="header-left">
+            <a href="#">Knight AC & Heating</a>
+        </div>
+        <div class="header-right">
+            <a href="tel:7022935438" class="btn-call-header">Call Now</a>
+        </div>
+    </header>
+
+    <!-- 2. HERO SECTION -->
+    <section class="hero section-padding">
+        <div class="container hero-content">
+            <h1>Boulder City's Most Trusted AC & Heating Repair</h1>
+            <p class="hero-subtext">Family-owned since 1999. Lance answers the phone. Same-day service available.</p>
+            
+            <div class="hero-ctas">
+                <a href="tel:7022935438" class="btn-primary">Call Now: (702) 293-5438</a>
+                <a href="#contact" class="btn-secondary">Get a Free Quote</a>
+            </div>
+
+            <div class="trust-bar">
+                <span>⭐ 4.8 Stars</span>
+                <span>| &nbsp;50+ Google Reviews</span>
+                <span>| &nbsp;Serving Boulder City Since 1999</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. SOCIAL PROOF STRIP -->
+    <div class="proof-strip">
+        <span class="proof-text">Trusted by Boulder City homeowners for 26 years</span>
+        <span class="proof-stars">★★★</span>
+    </div>
+
+    <!-- 4. SERVICES SECTION -->
+    <section class="section-padding">
+        <div class="container">
+            <h2>What We Fix & Install</h2>
+            
+            <div class="services-grid">
+                <div class="services-row">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <!-- Snowflake SVG icon for AC -->
+                            <svg viewBox="0 0 24 24"><path d="M13 2v3.075l2.1-2.1 1.425 1.425L13.4 7.5h3.1v2h-4.5V4.3L13 2zm-2 0l1 2.3v5.2H7.5v-2h3.1L7.475 4.4 8.9 2.975l2.1 2.1V2zm11 11h-3.075l2.1 2.1-1.425 1.425-3.1-3.1v3.1h-2v-4.5h5.2l2.3 1zm0-2l-2.3 1h-5.2V7.5h2v3.1l3.125-3.125 1.425 1.425-2.1 2.1H22zm-11 11v-3.075l-2.1 2.1-1.425-1.425 3.125-3.125v-3.1h2v4.5h-5.2l-2.3-1zm2 0l-1-2.3v-5.2h4.5v2h-3.1l3.125 3.125-1.425 1.425-2.1-2.1V22zm-11-11h3.075l-2.1-2.1 1.425-1.425 3.1 3.1V7.5h2v4.5H2.3L0 11zm0 2l2.3-1h5.2v4.5h-2v-3.1L4.375 16.525 2.95 15.1l2.1-2.1H2z"/></svg>
+                        </div>
+                        <div class="service-title">AC Repair</div>
+                        <div class="service-desc">Fast, diagnostic repair to restore cool air immediately.</div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24"><path d="M19 12h-3.075l2.1-2.1-1.425-1.425-3.1 3.1V6.5h-2v5.1l-3.1-3.1-1.425 1.425 2.1 2.1H4v2h3.075l-2.1 2.1 1.425 1.425 3.1-3.1v5.1h2v-5.1l3.1 3.1 1.425-1.425-2.1-2.1H19v-2z"/></svg>
+                        </div>
+                        <div class="service-title">AC Installation</div>
+                        <div class="service-desc">Energy-efficient system upgrades designed for desert heat.</div>
+                    </div>
+                </div>
+                <div class="services-row">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <!-- Fire/Flame SVG icon for Heating -->
+                            <svg viewBox="0 0 24 24"><path d="M12 2.69c.12.35.19.74.19 1.15 0 1.25-.67 2.34-1.67 2.93 1.15.22 2.14.88 2.76 1.83C14.39 6.75 15.5 4.5 15.5 4.5s2.5 3.5 1 7.5c2.5-2.5 2-6.5 2-6.5s3.5 4 1 9.5c-1.74 3.83-5.65 6-9.5 6-5.52 0-10-4.48-10-10 0-4.28 2.7-7.93 6.5-9.31V4.5s-1.5 2.5 0 5.5c.5-1.5 2.5-4 2-7.31z"/></svg>
+                        </div>
+                        <div class="service-title">Furnace Repair</div>
+                        <div class="service-desc">Expert safe troubleshooting to bring your heating back online.</div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2s4.5 4.5 4.5 8.5C16.5 14 14 16.5 12 16.5S7.5 14 7.5 10.5C7.5 6.5 12 2 12 2zm0 18c-4.42 0-8 1.79-8 4h16c0-2.21-3.58-4-8-4z"/></svg>
+                        </div>
+                        <div class="service-title">Furnace Installation</div>
+                        <div class="service-desc">Professional heating replacements built for long-term reliability.</div>
+                    </div>
+                </div>
+                <div class="services-row">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <!-- Shield/Check SVG for Tune-Ups -->
+                            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zm-1-6l-3-3 1.41-1.41L11 13.17l4.59-4.59L17 10l-6 6z"/></svg>
+                        </div>
+                        <div class="service-title">Seasonal Tune-Up</div>
+                        <div class="service-desc">Preventative performance checkups to maximize system lifespan.</div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <!-- Emergency SVG for Rapid Response -->
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                        </div>
+                        <div class="service-title">Emergency Service</div>
+                        <div class="service-desc">Rapid-response support when systems fail in extreme weather.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. WHY KNIGHT AC SECTION -->
+    <section class="why-section section-padding">
+        <div class="container">
+            <h2>Why Choose Knight AC & Heating</h2>
+            
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-card-title">
+                        <span class="why-card-icon">📞</span>
+                        <span class="why-card-text">We Answer the Phone</span>
+                    </div>
+                    <p class="why-desc">No voicemail loops or dispatch centers. Lance picks up ready to assist.</p>
+                </div>
+
+                <div class="why-card">
+                    <div class="why-card-title">
+                        <span class="why-card-icon">⚡</span>
+                        <span class="why-card-text">Same-Day Service</span>
+                    </div>
+                    <p class="why-desc">Most critical system repairs completed the very same day you call us.</p>
+                </div>
+
+                <div class="why-card">
+                    <div class="why-card-title">
+                        <span class="why-card-icon">💰</span>
+                        <span class="why-card-text">Fair Pricing</span>
+                    </div>
+                    <p class="why-desc">Transparent upfront quotes with absolutely zero surprise hidden charges.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. REVIEWS SECTION -->
+    <section class="section-padding">
+        <div class="container">
+            <h2>What Boulder City Says</h2>
+            
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-quote">"Lance fixed our AC within 2 hrs of calling him, great service at the right price!"</p>
+                    <div class="review-author">— Verified Reviewer, Boulder City, NV</div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-quote">"He came within an hour! Honest, friendly, and knowledgeable."</p>
+                    <div class="review-author">— Verified Reviewer, Boulder City, NV</div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-quote">"Hands down the BEST!!! Not to mention the ONLY one who answered & got back to me."</p>
+                    <div class="review-author">— Verified Reviewer, Boulder City, NV</div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-quote">"We've had Lance come out for the last two summers. Definitely someone you can count on."</p>
+                    <div class="review-author">— Verified Reviewer, Boulder City, NV</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. CONTACT / CTA SECTION -->
+    <section id="contact" class="contact-section section-padding">
+        <div class="container">
+            <h2>AC Down? Call Lance Now.</h2>
+            <p class="contact-subtext">Same-day service. No runaround.</p>
+            <a href="tel:7022935438" class="btn-giant-call">(702) 293-5438</a>
+            <div class="contact-meta">
+                Or text us at <a href="tel:7022935438">(702) 293-5438</a> &middot; <a href="mailto:djdknightac@gmail.com">djdknightac@gmail.com</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. FOOTER -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <p class="footer-accent">Knight AC & Heating</p>
+            <p>1022 Nevada Hwy, Ste 180, Boulder City, NV 89005</p>
+            <p>Phone: <a href="tel:7022935438" style="color:#aaa;text-decoration:none;">(702) 293-5438</a> | Email: <a href="mailto:djdknightac@gmail.com" style="color:#aaa;text-decoration:none;">djdknightac@gmail.com</a></p>
+            <p class="footer-copyright">&copy; 2026 Knight AC & Heating. Family-owned since 1999.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
